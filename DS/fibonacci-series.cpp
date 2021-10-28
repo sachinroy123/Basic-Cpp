@@ -1,23 +1,23 @@
 //-------------------------------------------------- Program for Fibonacci numbers //--------------------------------------------------
 
-#include <bits/stdc++.h>
+#include<iostream>
 using namespace std;
-int fib (int n) {
-    int a = 0, b = 1, c, i;
-    if (n == 0) 
-        return a;
-    for (i = 2; i <= n; i++) {
-        c = a + b ;
-        a = b ;
-        b = c ;
-    }
-    return b ;
+int genFibonacci(int n) {
+   int fibo[n+2]; //array to store fibonacci values
+   // 0th and 1st number of the series are 0 and 1
+   fibo[0] = 0;
+   fibo[1] = 1;
+   for (int i = 2; i <= n; i++) {
+      fibo[i] = fibo[i-1] + fibo[i-2]; //generate ith term using previous
+      two terms
+   }
+   return fibo[n];
 }
-
-int main() {
-    int n = 9 ;
-    cout << fib(n) ;
-    return 0 ;
+int main () {
+   int n;
+   cout << "Enter number of terms: "; cin >>n;
+   cout << n<<" th Fibonacci Terms: "<<genFibonacci(n)<<endl;
 }
 
 // T.C : O(n)            S.C : O(1)
+
